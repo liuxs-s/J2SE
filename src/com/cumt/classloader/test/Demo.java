@@ -8,24 +8,26 @@ package com.cumt.classloader.test;
  **/
 public class Demo extends DemoParent{
     private int age;
-    private final Character sex = '0';
+    private final Character sex;
     static{
         String name = "liu";
         System.out.println("name:"+name);
     }
 
-    public Demo(int age,String occupation, String sallay ) {
+    public Demo(int age, String occupation, String sallay, Character sex) {
         super(occupation,sallay);
         this.age = age;
+        this.sex = sex;
         System.out.println("age:"+age);
     }
 
-    public Demo() {
+    public Demo(Character sex) {
         super();
+        this.sex = sex;
     }
 
     public static void main(String[] args) {
-        Demo demo = new Demo(15,"coder","10000");
+        Demo demo = new Demo(15,"coder","10000", '0');
         System.out.println("main is running....");
     }
 

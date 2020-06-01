@@ -30,8 +30,8 @@ public class SClassLoaderTest {
             //使用自定义类加载器加载class文件，并返回Class对象
             //自定义类加载器的加载路径
             SClassLoader sClassLoader=new SClassLoader(path);
-            //包名+类名
-            Class c = sClassLoader.loadClass(packageNamePath);
+            //Class c = sClassLoader.loadClass(packageNamePath);
+            Class<?> c = Class.forName(packageNamePath, true, sClassLoader);
 
             if(c!=null){
                 Object obj=c.newInstance();
