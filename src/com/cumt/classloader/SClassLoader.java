@@ -1,9 +1,6 @@
 package com.cumt.classloader;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * 描述：自定义类加载器
@@ -41,6 +38,19 @@ public class SClassLoader extends ClassLoader {
 
     }
 
+    public Class<?> loadData(String name) throws Exception{
+        Class log = null;
+        // 1.获取该class文件字节码数组
+        byte[] classData = getData();
+
+        if (classData != null) {
+            // 2.将class的字节码数组转换成Class类的实例
+            System.out.println("byte:"+classData);
+            log = defineClass(name, classData, 0, classData.length);
+        }
+        return log;
+    }
+
 
     private byte[] getData() {
 
@@ -72,6 +82,18 @@ public class SClassLoader extends ClassLoader {
         } else {
             return null;
         }
+    }
+
+    private byte[] getData2() throws Exception{
+//        InputStream inputStream = new FileInputStream(new File(path));
+//        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//        inputStream.transferTo(byteArrayOutputStream);
+//        byte[] bytes = byteArrayOutputStream.toByteArray();
+//        inputStream.close();
+//        byteArrayOutputStream.close();
+//        return bytes;
+        return null;
+
     }
 
     @Override

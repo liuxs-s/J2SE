@@ -21,7 +21,7 @@ public class SClassLoaderTest {
      */
     public static void main(String[] args) {
         //class的路径
-        String path = "D:/classlib/Demo.class";
+        String path = "D:/lib/Demo.class";
         //全包名
         String packageNamePath = "com.cumt.classloader.test.Demo";
 
@@ -32,7 +32,8 @@ public class SClassLoaderTest {
             SClassLoader sClassLoader=new SClassLoader(path);
 
             //加载Log这个class文件
-            Class<?> demo = sClassLoader.loadClass(packageNamePath);
+            //Class<?> demo = sClassLoader.loadClass(packageNamePath);  //主要是这里用错了，没有用到自己写的加载
+            Class<?> demo = sClassLoader.loadData(packageNamePath);
             System.out.println("类加载器是:" + demo.getClassLoader());
 
             //利用反射获取main方法
@@ -49,6 +50,8 @@ public class SClassLoaderTest {
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
         }
