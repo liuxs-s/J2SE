@@ -1,8 +1,5 @@
-package com.cumt.classloader.test;
+package com.cumt.classloader;
 
-import com.cumt.classloader.SClassLoader;
-
-import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -33,6 +30,7 @@ public class SClassLoaderTest {
 
             //加载Log这个class文件
             //Class<?> demo = sClassLoader.loadClass(packageNamePath);  //主要是这里用错了，没有用到自己写的加载
+            //Class<?> demo = sClassLoader.findClass(packageNamePath);   //这个也行
             Class<?> demo = sClassLoader.loadData(packageNamePath);
             System.out.println("类加载器是:" + demo.getClassLoader());
 
