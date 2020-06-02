@@ -21,7 +21,7 @@ public class SClassLoaderTest {
      */
     public static void main(String[] args) {
         //class的路径
-        String path = "D:/classlib";
+        String path = "D:/classlib/Demo.class";
         //全包名
         String packageNamePath = "com.cumt.classloader.test.Demo";
 
@@ -30,15 +30,16 @@ public class SClassLoaderTest {
             //使用自定义类加载器加载class文件，并返回Class对象
             //自定义类加载器的加载路径
             SClassLoader sClassLoader=new SClassLoader(path);
-            //Class c = sClassLoader.loadClass(packageNamePath);
-            Class<?> c = Class.forName(packageNamePath, true, sClassLoader);
 
-            if(c!=null){
-                Object obj=c.newInstance();
-                Method method=c.getMethod("say", null);
-                method.invoke(obj, null);
-                System.out.println(c.getClassLoader().toString());
-            }
+            //加载Log这个class文件
+            Class<?> demo = sClassLoader.loadClass(packageNamePath);
+            System.out.println("类加载器是:" + demo.getClassLoader());
+
+            //利用反射获取main方法
+            Method method = demo.getDeclaredMethod("main", String[].class);
+            Object object = demo.newInstance();
+            String[] arg = {"ad"};
+            method.invoke(object, (Object) arg);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -51,8 +52,12 @@ public class SClassLoaderTest {
             e.printStackTrace();
         } finally {
         }
-
-
-
+        System.out.println("----------------Book----------------");
+        System.out.println(Book.class.getClassLoader());
+        System.out.println(Book.class.getClassLoader().getParent());
+        System.out.println(Book.class.getClassLoader().getParent().getParent());
     }
+}
+class Book{
+
 }

@@ -8,7 +8,7 @@ package com.cumt.classloader.test;
  **/
 public class Demo extends DemoParent{
     private int age;
-    private final Character sex;
+    private final Character sex = '0';
     static{
         String name = "liu";
         System.out.println("name:"+name);
@@ -17,13 +17,14 @@ public class Demo extends DemoParent{
     public Demo(int age, String occupation, String sallay, Character sex) {
         super(occupation,sallay);
         this.age = age;
-        this.sex = sex;
         System.out.println("age:"+age);
     }
 
     public Demo(Character sex) {
         super();
-        this.sex = sex;
+    }
+
+    public Demo() {
     }
 
     public static void main(String[] args) {
