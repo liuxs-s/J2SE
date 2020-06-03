@@ -33,6 +33,9 @@ public class SClassLoaderTest {
             //Class<?> demo = sClassLoader.findClass(packageNamePath);   //这个也行
             Class<?> demo = sClassLoader.loadData(packageNamePath);
             System.out.println("类加载器是:" + demo.getClassLoader());
+            System.out.println(demo.getClassLoader().getParent());
+            System.out.println(demo.getClassLoader().getParent().getParent());
+            System.out.println(demo.getClassLoader().getParent().getParent().getParent());
 
             //利用反射获取main方法
             Method method = demo.getDeclaredMethod("main", String[].class);
