@@ -13,9 +13,9 @@ import java.util.concurrent.*;
  * 实现 Callable 接口；
  * 线程池
  *   使用线程池中线程对象的步骤：
- *       1.创建线程池对象
- *       2.创建Runnable接口子类对象
- *       3.提交Runnable接口子类对象
+ *       1.创建线程池对象 ExecutorService
+ *       2.创建Runnable接口或者Callable子类对象，线程任务
+ *       3.提交Runnable接口子类对象（线程任务）
  *       4.关闭线程池
  *
  *
