@@ -50,4 +50,30 @@ V get (long timeout, TimeUnit unit) throws InterruptedException, ExecutionExce
 如果计算超时，将抛出TimeoutException
 Future的实现类有java.util.concurrent.FutureTask<V>即 javax.swing.SwingWorker<T,V>。
 通常使用FutureTask来处理我们的任务。FutureTask类同时又实现了Runnable接口，所以可以直接提交给Executor执行。
-使用FutureTask实现超时执行的代码如下：
+
+
+ThreadFactory接口:
+根据需要创建新线程的对象。使用线程工厂就无需再手工编写对 new Thread 的调用了，从而允许应用程序使用特殊的线程子类、属性等等。
+
+此接口最简单的实现就是：
+
+ class SimpleThreadFactory implements ThreadFactory {
+   public Thread newThread(Runnable r) {
+     return new Thread(r);
+   }
+ }
+ 
+Executors.defaultThreadFactory() 方法提供了更有用的简单实现，即在返回线程前将已创建线程的上下文设置为已知的值。
+
+public interface ThreadFactory {
+
+    /**
+     * Constructs a new {@code Thread}.  Implementations may also initialize
+     * priority, name, daemon status, {@code ThreadGroup}, etc.
+     *
+     * @param r a runnable to be executed by new thread instance
+     * @return constructed thread, or {@code null} if the request to
+     *         create a thread is rejected
+     */
+    Thread newThread(Runnable r);
+}

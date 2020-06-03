@@ -4,10 +4,7 @@ import com.cumt.thread.create.way.MyCallable;
 import com.cumt.thread.create.way.MyRunnable;
 import com.cumt.thread.create.way.MyThread;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
 
 /**
  * 描述：线程学习一：线程的创建方式
@@ -15,6 +12,12 @@ import java.util.concurrent.FutureTask;
  * 继承Thread类
  * 实现 Callable 接口；
  * 线程池
+ *   使用线程池中线程对象的步骤：
+ *       1.创建线程池对象
+ *       2.创建Runnable接口子类对象
+ *       3.提交Runnable接口子类对象
+ *       4.关闭线程池
+ *
  *
  * @author liuxs_s@163.com
  * @create 2020-06-03 20:59
@@ -92,6 +95,24 @@ public class SThread {
         new Thread(new FutureTask<Integer>(SThread::runs2),"t10").start();
 
         //方式4：线程池方式
+        ExecutorService executorService0 = Executors.newFixedThreadPool(10);
+        MyRunnable r = new MyRunnable();
+        for(int i = 0;i < 10;i++){
+            executorService0.submit(r);
+        }
+        executorService0.shutdown();
+
+        ExecutorService executorService1 = Executors.newSingleThreadExecutor();
+        MyRunnable myRunnable = new MyRunnable();
+        for(int i = 0;i < 10;i++){
+            executorService1.execute(myRunnable);
+        }
+        executorService1.shutdown();
+
+        ExecutorService executorService2 = Executors.newCachedThreadPool();
+        ExecutorService executorService3 = Executors.newScheduledThreadPool(10);
+        ExecutorService executorService4 = Executors.newWorkStealingPool();
+
 
     }
 

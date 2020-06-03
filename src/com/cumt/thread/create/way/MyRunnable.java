@@ -7,8 +7,10 @@ package com.cumt.thread.create.way;
  * @create 2020-06-03 21:03
  **/
 public class MyRunnable implements Runnable{
+    int i =0;
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName()+" is running.....");
+        i++;
+        System.out.println(Thread.currentThread().getName() + i + " is running.....");
     }
 }
