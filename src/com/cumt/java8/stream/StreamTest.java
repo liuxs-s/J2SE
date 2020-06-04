@@ -188,15 +188,21 @@ public class StreamTest {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
 
         boolean allMatch = list.stream().allMatch(e -> e > 10); //false
+        System.out.println(allMatch);
         boolean noneMatch = list.stream().noneMatch(e -> e > 10); //true
+        System.out.println(noneMatch);
         boolean anyMatch = list.stream().anyMatch(e -> e > 4);  //true
-
+        System.out.println(anyMatch);
         Integer findFirst = list.stream().findFirst().get(); //1
+        System.out.println(findFirst);
         Integer findAny = list.stream().findAny().get(); //1
-
+        System.out.println(findAny);
         long count = list.stream().count(); //5
+        System.out.println(count);
         Integer max = list.stream().max(Integer::compareTo).get(); //5
+        System.out.println(max);
         Integer min = list.stream().min(Integer::compareTo).get(); //1
+        System.out.println(min);
     }
 
 }
