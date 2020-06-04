@@ -1,4 +1,19 @@
+**函数式接口**
+
+
+lambda表达式需要函数式接口的支持。
+所谓的函数式接口，是指只有一个抽象方法，另外JDK8也提供了一个注解@FunctionalInterface，帮助我们编译时检查语法是否符合。
+从中我们可以得知函数式接口的几点特征：
+    函数式接口只有一个抽象方法
+    default方法某默认实现，不属于抽象方法
+    接口重写了Object的公共方法也不算入内
+所以，Comparator虽然有两个抽象方法：
+int compare(T o1, T o2);
+boolean equals(Object obj);
+其中 equals为Object的方法，不算入内，所以Comparator可以作为函数式接口。
+
 **lambda表达式**
+
 list.sort(Comparator.comparing(String::length));
 public static <T, U extends Comparable<? super U>> Comparator<T> comparing(
             Function<? super T, ? extends U> keyExtractor);
