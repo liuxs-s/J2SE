@@ -7,4 +7,5 @@ package com.cumt.java8.optional;
  * @create 2020-06-04 22:54
  **/
 public class OptionalTest {
+
 }
