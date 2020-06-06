@@ -1,4 +1,4 @@
-package com.cumt.java8.stream;
+package com.cumt.java8.stream.test;
 
 import com.cumt.java8.stream.pojo.Student;
 import org.junit.Test;

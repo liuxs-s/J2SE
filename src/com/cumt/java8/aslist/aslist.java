@@ -1,4 +1,4 @@
-package com.cumt.java8.stream;
+package com.cumt.java8.aslist;
 
 import java.util.Arrays;
 import java.util.List;
