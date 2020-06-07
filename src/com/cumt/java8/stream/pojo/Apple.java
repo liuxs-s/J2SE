@@ -17,6 +17,9 @@ public class Apple {
         this.weight = weight;
     }
 
+    public Apple() {
+    }
+
     public String getColor() {
         return color;
     }

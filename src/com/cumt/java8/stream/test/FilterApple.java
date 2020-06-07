@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 
 /**
  * 描述：以“在农厂工作，需要对水果进行过滤统计，并且怎么很轻松的应对农场主给出的各种不同的统计需求"为例，一步步
+ * lambda表达式在我看来，更像是对函数式接口的一种实现（代替匿名内部类）
  *
  * @author liuxs_s@163.com
  * @create 2020-06-05 21:34
@@ -179,8 +180,18 @@ public class FilterApple {
         appleList1.forEach(System.out::println);
 
         //然后我们可以使用lambda表达式啊，而且使用Lambda表达式会比使用上面匿名内部类或子类继承的方式更节省空间
-        List<Apple> appleList2 = filterApples(apples, (apple) -> "yello".equals(apple.getColor()));
+        //lambda表达式分为参数部分和函数体部分,语法与ES6的箭头函数语法相同
+        List<Apple> appleList2 = filterApples(apples, (Apple apple) -> "yello".equals(apple.getColor()));
+        //表达式部分会自动进行类型推断
+        List<Apple> appleList3 = filterApples(apples, (apple) -> "yello".equals(apple.getColor()));
+        //一个参数时，可以省略掉括号，但是无参时必须是(),含有多个参数时候，括号也是不能省略的
+        List<Apple> appleList4 = filterApples(apples, apple -> "yello".equals(apple.getColor()));
         appleList2.forEach(System.out::println);
+        //关于函数体:只有一个return 时,可以省略return,但是如果有多个statement表达式,就必须有{}
+        List<Apple> appleList5 = filterApples(apples, apple -> "yello".equals(apple.getColor()));
+        //有return {}就不能少
+        List<Apple> appleList6 = filterApples(apples, apple -> {return "yello".equals(apple.getColor());});
+
     }
 
 }
